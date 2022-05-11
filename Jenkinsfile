@@ -8,7 +8,7 @@ pipeline {
         stage('Git Build') {
             steps {
                 // Get some code from a GitHub repository
-                git branch: 'main', url: 'https://github.com/SuchiBhargav/messmanagement-frontent-new-.git'
+                git branch: 'master', url: 'https://github.com/SuchiBhargav/messmanagement-frontent-new-.git'
             }
 
         }
