@@ -1,5 +1,5 @@
 import React ,{useState} from 'react';
-import Emoji from "./emoji";
+
 import Button from "react-bootstrap/Button";
 import { RatingComponent } from 'react-rating-emoji'
 import 'react-rating-emoji/dist/index.css'

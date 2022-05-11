@@ -5,7 +5,7 @@ import axios from "axios";
 import { Grid, Paper } from "@material-ui/core";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Graph from "./graph";
+
 import { VictoryPie } from "victory-pie";
 import Footermail from "./footermail";
 import download from 'downloadjs'

@@ -6,7 +6,7 @@ import Table from "react-bootstrap/Table";
 import Container from "react-bootstrap/Container";
 import {Link} from 'react-router-dom';
 import NavBar from './Navbar';
-import FeedBack from './feedback2';
+
 import Footermail from './footermail';
 import axios from 'axios';
 import Button from "react-bootstrap/Button";
@@ -89,25 +89,6 @@ useEffect(()=>{
         </Button>
 
             
-
-              {/* <NavDropdown title="DAY" id="collasible-nav-dropdown">
-        <NavDropdown.Item href="#action/3.1">MONDAY</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">
-          TUESDAY
-        </NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">
-          WEDNESDAY
-        </NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">
-          THURSDAY
-        </NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">FRIDAY</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">
-          SATURDAY
-        </NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">SUNDAY</NavDropdown.Item>
-      </NavDropdown> */}
-
      
 
             </Nav>

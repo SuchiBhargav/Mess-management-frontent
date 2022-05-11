@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Dashboard from "./dashboard2";
 import axios from "axios";
 const Login=()=>{
     const [username, setusername] = useState("");
