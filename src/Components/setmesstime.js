@@ -5,26 +5,51 @@ import { Card } from 'react-bootstrap';
 import Foodcomnav from './foodcomnav';
 import {  Form } from 'reactstrap';
 import { FormGroup } from 'reactstrap';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 const Setmesstime=()=>{
 
   const [messtime,setmesstime]=useState({});
 
+  function notify(){ 
+    toast.success("Mess Time updated successfully!");
+  }
+
   const handleform=(e)=>{
     postdatatoserver(messtime);
     e.preventDefault();
+    notify();
   };
+
+  // let obj = {
+  //   "id": 1,
+  //   "breakfastin": 2.3,
+  //   "breakfastout": 4.5,
+  //   "lunchin": 5.7,
+  //   "lunchout": 3.5,
+  //   "dinnerin": 45.7,
+  //   "dinnerout": 3.5
+  //   }
 
   const  postdatatoserver= async (data)=>{
     console.log(messtime)
-    await axios.post("localhost:8085/updateTime" ,data).then(
-      (response)=>{
-          console.log(response);   
-      },
-      (error)=>{
-          console.log("error");
-      }
-    )
+    axios.put('http://localhost:8087/updateTime/1', {
+        "id": 1,
+        "breakfastin": messtime.breakfastin,
+        "breakfastout": messtime.breakfastout,
+        "lunchin": messtime.lunchin,
+        "lunchout": messtime.lunchout,
+        "dinnerin": messtime.dinnerin, 
+        "dinnerout": messtime.lunchout
+        },{}).then(
+            (response)=>{
+                console.log(response);   
+            },
+            (error)=>{
+                console.log(error);
+            }
+          )
   }
 
 
@@ -52,7 +77,7 @@ const Setmesstime=()=>{
               <Card.Header>Mess Timing</Card.Header>
               <Card.Body>
                 <Card.Text>
-                <Form onSubmit={handleform}>
+                <Form >
                 
                   <strong>Breakfast</strong> :
                   <FormGroup>
@@ -63,9 +88,9 @@ const Setmesstime=()=>{
                   </FormGroup>
                   <FormGroup>
                   <input  id="bout" placeholder="breakfastout"
-                  onChange={(e)=>{
-                  setmesstime({...messtime,breakfastout : e.target.value})
-                    }}/>pm
+                    onChange={(e)=>{
+                    setmesstime({...messtime,breakfastout : e.target.value})
+                      }}/>pm
                   </FormGroup>
                   <strong>Lunch</strong> : 
                   <FormGroup>
@@ -94,8 +119,7 @@ const Setmesstime=()=>{
                       }}/>  pm
                      </FormGroup>
                     
-                     <br/>
-                     <Button variant="success" size="lg"onClick={handleform}>
+                     <Button variant="success" size="lg" onClick={handleform}>
                       UPDATE
                      </Button> 
                 </Form>
@@ -103,7 +127,7 @@ const Setmesstime=()=>{
                 </Card.Text>
               </Card.Body>
             </Card>
-       
+       <ToastContainer/>
      </>
     );
 }

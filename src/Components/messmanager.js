@@ -5,10 +5,10 @@ import axios from "axios";
 import { Grid, Paper } from "@material-ui/core";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Graph from "./graph";
+
 import { VictoryPie } from "victory-pie";
 import Footermail from "./footermail";
-
+import download from 'downloadjs'
 
 
 
@@ -19,66 +19,64 @@ const MessManager = () => {
   const [id, setId] = useState("1");
   console.log("id=",id);
 
+  const Generatereport = ()=> {
+    axios({
+      url: 'http://localhost:8087/users/export/pdf', //your url
+      method: 'GET',
+      responseType: 'blob', // important
+  }).then((response) => {
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'file.pdf'); //or any other extension
+      document.body.appendChild(link);
+      link.click();
+  });
+}
+     
   
 
   const Breakfastgraph = ()=> {
-    axios.get("http://localhost:8084/getRating/1",
+    axios.get("http://localhost:8087/getRating/1",
      {
   
      }).then(response=>{
       setRate(response.data);
       let obj = response.data;
       console.log("Breakfastgraph");
-        
-      
-     
-         
-     });
-     
-   
-     
+     }); 
 }
+
 const Lunchgraph = ()=> {
-  axios.get("http://localhost:8084/getRating/2",
+  axios.get("http://localhost:8087/getRating/2",
    {
 
    }).then(response=>{
     setRate(response.data);
     console.log("Lunchgraph" + Rate);
-      
-       
-       
-   });
-   
- 
+   }); 
    
 }
 const Dinnergraph = ()=> {
-  axios.get("http://localhost:8084/getRating/3",
+  axios.get("http://localhost:8087/getRating/3",
    {
 
    }).then(response=>{
     setRate(response.data);
-    console.log("Dinnergraph" + Rate);
-      
-       
-       
-   });
-   
- 
-   
+    console.log("Dinnergraph" + Rate);      
+   }); 
 }
 
+// const myData = [
+//   { x: "rate 1", y: 30 },
+//   { x: "rate 2", y: 20 },
+//   { x: "rate 3", y: 50 },
+//   { x: "rate 4", y: 80 },
+//   { x: "rate 5", y: 40 },
+// ];
 
- 
 
-
-
-
-
-
-
-            fetch("http://localhost:8084/getCountplates",{
+            fetch("http://localhost:8087/getCountplates",{
               method:"GET",
           })
               .then((response) => response.json())
@@ -114,6 +112,9 @@ const Dinnergraph = ()=> {
 <button onClick={Lunchgraph}>Lunch-rating</button>
 <button onClick={Dinnergraph}>Dinner-rating</button>
            
+           <Button onClick={Generatereport} style={{margin:"10px"}} align="right" variant="success" size="lg" margin="20px">
+              generate sell report
+            </Button>
            
             <Button href ="login" style={{margin:"10px"}} align="right" variant="success" size="lg" margin="20px">
               LOGOUT

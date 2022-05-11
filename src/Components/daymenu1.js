@@ -6,23 +6,30 @@ import Table from "react-bootstrap/Table";
 import Container from "react-bootstrap/Container";
 import {Link} from 'react-router-dom';
 import NavBar from './Navbar';
-import FeedBack from './feedback';
+
 import Footermail from './footermail';
 import axios from 'axios';
-const Todaymenu=()=>{
+import Button from "react-bootstrap/Button";
+const Daymenu1=()=>{
   const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
 const today = new Date();
-let day = weekday[today.getDay()];
+// let day = weekday[today.getDay()];
 
 const[breakfastmenu,setbreakfastmenu]=useState([]);
 const[lunchmenu,setlunchmenu]=useState([]);
 const[dinnermenu,setdinnermenu]=useState([]);
+ let day= "monday"
+function sentday(){
+   let myVar = document.getElementById('day').value; 
+   console.log(myVar);
+   let day=myVar;
+   getDaymenuFromServer(day);
+}
 
+console.log(day);
 
- 
-
-const getTodaymenuFromServer = async() =>{
+const getDaymenuFromServer = async(day) =>{
   await axios.get('http://localhost:8087/getmenu/' + day).then(
     (response) => {
       console.log(response);
@@ -30,9 +37,7 @@ const getTodaymenuFromServer = async() =>{
        setbreakfastmenu(response.data[0].breakfast.split(","));
        setlunchmenu(response.data[0].lunch.split(","));
        setdinnermenu(response.data[0].dinner.split(","))
-       // setbreakfastmenu( response.data[0].breakfast.split(","));
-       // setlunchmenu({...lunchmenu, value : response.data[0].lunch.split(",")});
-      // setdinnermenu({...dinnermenu, value : response.data[0].dinner.split(",")});
+      
           console.log(breakfastmenu);
           console.log(lunchmenu);
           console.log(dinnermenu);
@@ -44,22 +49,64 @@ const getTodaymenuFromServer = async() =>{
 }
 
 useEffect(()=>{
-  getTodaymenuFromServer();
+  getDaymenuFromServer();
   // console.log(day);
 },[]);
  
-// var b = breakfastmenu.split(",");
-//  console.log(b); // ["This", " is", " javascript", " string ", "split example"]
-//   var l = lunchmenu.split(",");
-//   console.log(l);
-//   var d = dinnermenu.split(",");
-//   console.log(d);
+
 
 
     return (
         <>
         <div>
-       <NavBar/>
+        <Navbar fixed="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand href="#home">Hii Buddy</Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+            <Button href="todaymenu" variant="success" size="sm">
+            TodayMenu
+          </Button>
+            
+                
+                <Button  href="dashboard3" variant="success" size="sm"> Select Tomorrow's Menu</Button>
+              
+              <h1>Select Day</h1>
+
+              <select id="day">
+              <option value="none" selected disabled hidden>Select day</option>
+                <option value="monday">MONDAY</option>
+                <option value="tuesday">TUESDAY</option>
+                <option value="wednesday">WEDNESDAY</option>
+                <option value="thursday">THURSDAY</option>
+                <option value="friday">FRIDAY</option>
+                <option value="saturday">SATURDAY</option>
+                <option value="sunday">SUNDAY</option>
+              </select>
+              <Button onClick={sentday} variant="success" size="sm">
+        check
+        </Button>
+
+            
+     
+
+            </Nav>
+          </Navbar.Collapse>
+          <Button href="messtime" variant="success" size="sm">
+        Messtime
+        </Button>
+        <Button href="instruction" variant="success" size="sm">
+         Instruction
+        </Button>
+        <Button href="history" variant="success" size="sm">
+            History
+          </Button>
+          <Button href="login" align="right" variant="success" size="sm">
+            LOGOUT
+          </Button>
+        </Container>
+      </Navbar>
       </div>
       <br/>
       <br/>
@@ -110,7 +157,7 @@ useEffect(()=>{
         </Table>
       </Paper>
 
-      <FeedBack/>
+     
       <Footermail/>
 
      
@@ -120,4 +167,4 @@ useEffect(()=>{
 }
 
 
-export default Todaymenu;
+export default Daymenu1;

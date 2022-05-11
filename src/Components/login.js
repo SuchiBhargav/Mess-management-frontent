@@ -4,11 +4,11 @@ import {Link} from 'react-router-dom';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Dashboard from "./dashboard2";
 import axios from "axios";
 const Login=()=>{
     const [username, setusername] = useState("");
     const [password, setPassword] = useState("");
+    const [role, setRole] = useState("");
     const [error, setError] = useState('');
 
     function validateForm() {
@@ -19,58 +19,73 @@ const Login=()=>{
     const sub = async(e) => {
         e.preventDefault();
         let hardcodedCred = {
-            username: 'Sanphire',
-            password: 'Sanphire@015'
+            username: 'suchi',
+            password: '123',
+            role:'student'
         }
         let hardcodedCred1 = {
-            username: 'Suchi',
-            password: 'Suchi@015'
+            username: 'pragya',
+            password: '123',
+            role:'manager'
+        }
+        let hardcodedCred2 = {
+            username: 'nikunj',
+            password: '123',
+            role:'foodcom'
         }
 
-        if ((username == hardcodedCred.username) && (password == hardcodedCred.password)) {
+        if ((username == hardcodedCred.username) && (password == hardcodedCred.password)&&(role == hardcodedCred.role)) {
             //combination is good. Log them in.
             //this token can be anything. You can use random.org to generate a random string;
 
-            window.location.href="/dashboard";
+            window.location.href="/dashboard3";
         }
 
-        else if ((username == hardcodedCred1.username) && (password == hardcodedCred1.password)) {
+        else if ((username == hardcodedCred1.username) && (password == hardcodedCred1.password)&&(role == hardcodedCred1.role)) {
             //combination is good. Log them in.
             //this token can be anything. You can use random.org to generate a random string;
 
-            window.location.href="/doctordashboard";
+            window.location.href="/messmanager";
+        }
+        else if ((username == hardcodedCred2.username) && (password == hardcodedCred2.password)&&(role == hardcodedCred2.role)) {
+            //combination is good. Log them in.
+            //this token can be anything. You can use random.org to generate a random string;
+
+            window.location.href="/foodcom";
         }
         else {
             //bad combination
             alert('Wrong Username or Password Combination');
         }
     }
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
 
-        const authObject = { 'username': username, 'password': password ,'role':'ROLE_PATIENT'};
+    //     const authObject = { 'username': username, 'password': password ,'role':'ROLE_PATIENT'};
 
 
 
-        try {
-            let response=await axios.get('http://e9ad-119-161-98-68.ngrok.io/signin', { headers: authObject });
+    //     try {
+    //         let response=await axios.get('http://e9ad-119-161-98-68.ngrok.io/signin', { headers: authObject });
 
-            localStorage.setItem('username', username);
-            localStorage.setItem('password', password);
-            console.log(response)
+    //         localStorage.setItem('username', username);
+    //         localStorage.setItem('password', password);
+    //         localStorage.setItem('role', role);
+    //         console.log(response)
 
-            window.location.reload();
-            setError('');
-        } catch (err) {
-            setError('Oops, incorrect credentials.');
-            console.log("lop")
-        }
-    };
+    //         window.location.reload();
+    //         setError('');
+    //     } catch (err) {
+    //         setError('Oops, incorrect credentials.');
+    //         console.log("lop")
+    //     }
+    // };
 
     const paperStyle={padding :20,height:'70vh',width:400, margin:"20px auto"}
     const avatarStyle={backgroundColor:'#1bbd7e'}
     const btnstyle={margin:'8px 0'}
     return(
+        <div>
         <Grid>
             <Paper elevation={10} style={paperStyle}>
                 <Grid align='center'>
@@ -80,6 +95,7 @@ const Login=()=>{
                 </Grid>
                 <TextField  value={username} onChange={(e) => setusername(e.target.value)} label='Username' placeholder='Enter username' fullWidth required/>
                 <TextField value={password}  onChange={(e) => setPassword(e.target.value)} label='Password' placeholder='Enter password' type='password' fullWidth required/>
+                <TextField value={role}  onChange={(e) => setRole(e.target.value)} label='Role' placeholder='Enter Role' fullWidth required/>
                 <FormControlLabel
                     control={
                         <Checkbox
@@ -104,6 +120,7 @@ const Login=()=>{
                 {/*</Typography>*/}
             </Paper>
         </Grid>
+        </div>
     )
 }
 

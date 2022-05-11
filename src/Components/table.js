@@ -2,7 +2,7 @@ import React from 'react';
 import { Paper } from "@material-ui/core";
 import Table from "react-bootstrap/Table";
 const Tables =()=>{
-    fetch("http://localhost:8084/getmenu/monday",{
+    fetch("http://localhost:8087/getmenu/monday",{
         method:"GET",
     })
         .then((response) => response.json())

@@ -5,39 +5,30 @@ import { Dropdown } from 'react-bootstrap';
 const Foodcomnav=()=>{
     return(
         <>
-        <div style={{ width:1200 }}>
+        <div style={{ width:"1400px"}}>
           <Navbar bg="dark" variant="dark">
-            <Navbar.Brand href="#home" style={{paddingleft:50 ,margin:10}}>  Hey Foodcomm</Navbar.Brand> 
+            <Navbar.Brand href="foodcom" style={{paddingleft:"50px" ,margin:"10px"}}>  Hey Foodcomm</Navbar.Brand> 
 
-            <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            Dropdown Button
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">Monday</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Tuesday</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Wednesday</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Thursday</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Friday</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Saturday</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Sunday</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+           
         <table>
           <tr>
+          <td>
+          <Button href="foodcom" style={{margin:"10px"}} variant="success" size="sm">
+            Setmenu
+           </Button>
+           </td>
             <td>
-          <Button href="setmesstime" style={{margin:"10px"}} variant="success" size="lg">
+          <Button href="setmesstime" style={{margin:"10px"}} variant="success" size="sm">
             Settime
            </Button>
            </td>
            <td>
-           <Button href="setinstruction" style={{margin:"10px"}} variant="success" size="lg">
+           <Button href="setinstruction" style={{margin:"10px"}} variant="success" size="sm">
             Setinstruction
            </Button>
            </td>
            <td>
-            <Button href="login" style={{margin:"10px"}} variant="success" size="lg">
+            <Button href="login" style={{margin:"10px"}} variant="success" size="sm">
             LOGOUT
            </Button>
            </td>

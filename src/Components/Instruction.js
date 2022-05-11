@@ -7,7 +7,7 @@ import Footermail from './footermail';
 
 const Instruction=()=>{
   console.clear();
-  fetch("http://localhost:8084/getInstruction/1",{
+  fetch("http://localhost:8087/getInstruction/1",{
     method:"GET",
 })
     .then((response) => response.json())
