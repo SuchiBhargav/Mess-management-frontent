@@ -7,7 +7,7 @@ import Footermail from './footermail';
 
 const Instruction=()=>{
   console.clear();
-  fetch("http://0ecb-103-156-19-229.ngrok.io/getInstruction/1",{
+  fetch("http://localhost:8087/getInstruction/1",{
     method:"GET",
 })
     .then((response) => response.json())

@@ -9,7 +9,7 @@ const Messtime=()=>{
   const [time,settime]=useState([]);
 
 const getTimeFromServer=async()=>{
-  const response=await fetch('http://0ecb-103-156-19-229.ngrok.io/getMesstime');
+  const response=await fetch('http://localhost:8087/getMesstime');
   const data =await response.json();
   console.log(data);
   console.log(data[0].breakfastin);

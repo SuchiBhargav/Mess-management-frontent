@@ -39,8 +39,8 @@ const Dashboard3 = () => {
     //save meal to the server
     const  postmealtoserver= async (data)=>{
       console.log(mealinfo)
-      axios.put('http://0ecb-103-156-19-229.ngrok.io/postplatecount', {
-          "id": 1,
+      axios.post('http://localhost:8087/postplatecount', {
+          "studentid": 1,
           "breakfast": bvalue,
           "lunch": lvalue,
           "dinner": dvalue, 
@@ -78,7 +78,7 @@ const[lunchmenu,setlunchmenu]=useState([]);
 const[dinnermenu,setdinnermenu]=useState([]);
 
 const getTomorrowmenuFromServer = async() =>{
-  await axios.get('http://0ecb-103-156-19-229.ngrok.io/getmenu/' + day).then(
+  await axios.get('http://localhost:8087/getmenu/' + day).then(
     (response) => {
       console.log("inside response");
       console.log(response.data[0].breakfast);

@@ -38,8 +38,15 @@ const FeedBack=()=>{
        
       
       const handleform = (e) => {
- 
-        postdatatoserver(sentfeedback);
+        console.log(sentfeedback);
+        const rate={
+          "studentid": 1,
+        "breakfastrating": sentfeedback.brating,
+        "lunchrating": sentfeedback.lrating,
+        "dinnerrating": sentfeedback.drating,
+        "feedback": sentfeedback.feedback
+        }
+        postdatatoserver(rate);
         e.preventDefault();
         notify();
       };
@@ -47,22 +54,17 @@ const FeedBack=()=>{
     
       const  postdatatoserver= async (data)=>{
         console.log(data)
-        axios.post("http://c228-103-156-19-229.ngrok.io/postrating", {
-        "studentid": 1,
-        "breakfastrating": sentfeedback.brating,
-        "lunchrating": sentfeedback.lrating,
-        "dinnerrating": sentfeedback.drating,
-        "feedback": sentfeedback.feedback
-           
-            },{}).then(
-                (response)=>{
-                    console.log(response);   
-                },
-                (error)=>{
-                    console.log(error);
-                }
-              )
-      }
+        axios.post("http://localhost:8087/postrating",data,{})
+        .then(
+          (response)=>{
+              console.log(response);   
+          },
+          (error)=>{
+              console.log(error);
+          }
+        )
+}
+       
     
 
 
