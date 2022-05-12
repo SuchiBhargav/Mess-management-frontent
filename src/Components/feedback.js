@@ -38,15 +38,15 @@ const FeedBack=()=>{
        
       
       const handleform = (e) => {
-        console.log(sentfeedback);
-        const rate={
+       // console.log(sentfeedback);
+        const rateee={
           "studentid": 1,
         "breakfastrating": sentfeedback.brating,
         "lunchrating": sentfeedback.lrating,
         "dinnerrating": sentfeedback.drating,
         "feedback": sentfeedback.feedback
         }
-        postdatatoserver(rate);
+        postdatatoserver(rateee);
         e.preventDefault();
         notify();
       };
@@ -54,7 +54,7 @@ const FeedBack=()=>{
     
       const  postdatatoserver= async (data)=>{
         console.log(data)
-        axios.post("http://localhost:8087/postrating",data,{})
+        axios.post("http://localhost:8087/postrating/",data)
         .then(
           (response)=>{
               console.log(response);   
@@ -64,10 +64,6 @@ const FeedBack=()=>{
           }
         )
 }
-       
-    
-
-
 
 
     return(

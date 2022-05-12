@@ -25,7 +25,7 @@ const History=()=>{
    // },[]);
 
    const getHistoryFromServer=async()=>{
-    const response=await fetch('http://localhost:8087/history/16');
+    const response=await fetch('http://localhost:8087/history/67');
     const data =await response.json();
     console.log(data);
     console.log(data[0]);
@@ -53,7 +53,7 @@ const History=()=>{
               <th>BREAKFAST</th>
               <th >LUNCH</th>
               <th>DINNER</th>
-              <th>credit</th>
+              <th>Cost</th>
             </tr>
           </thead>
 
@@ -65,7 +65,7 @@ const History=()=>{
                     <td>{his.breakfast}</td>
                     <td> {his.lunch}</td>
                     <td> {his.dinner}</td>
-                    <td>{}</td>
+                    <td>{his.breakfast*50+his.lunch*80+his.dinner*40}</td>
                   </tr>
                 ))}
           </tbody>
