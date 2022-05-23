@@ -65,7 +65,7 @@ const History=()=>{
                     <td>{his.breakfast}</td>
                     <td> {his.lunch}</td>
                     <td> {his.dinner}</td>
-                    <td>{}</td>
+                    <td>{his.breakfast*50+his.lunch*80+his.dinner*40}</td>
                   </tr>
                 ))}
           </tbody>
