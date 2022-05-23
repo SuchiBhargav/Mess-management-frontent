@@ -106,8 +106,8 @@ const Login=()=>{
                     label="Remember me"
                 />
                 <Button type='submit' onClick={sub} variant="contained" style={avatarStyle} fullWidth><b>Login</b></Button>
-                <Link to="/forgotPassword" > <Button type='submit'  variant="contained" style={btnstyle} size="small">Forget Password</Button><br></br></Link>
-                <Link to="/signup" >  <Button type='submit'  variant="contained" style={btnstyle} size="small">SignUp</Button></Link>
+//                 <Link to="/forgotPassword" > <Button type='submit'  variant="contained" style={btnstyle} size="small">Forget Password</Button><br></br></Link>
+//                 <Link to="/signup" >  <Button type='submit'  variant="contained" style={btnstyle} size="small">SignUp</Button></Link>
                 {/*<Typography >*/}
                 {/*    <Link href="#" >*/}
                 {/*        Forgot password ?*/}
