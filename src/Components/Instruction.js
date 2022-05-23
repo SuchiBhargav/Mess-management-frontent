@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 import axios from 'axios';
 import NavBar from './Navbar';
 import Footermail from './footermail';
-import base_url from "./bootapi";
+// import base_url from "./bootapi";
 
 
 const Instruction=()=>{
