@@ -1,11 +1,11 @@
-FROM node:17 as node
-# Setting the remote DIR to /app
-WORKDIR /home/suchi/Documents/spe_major/frontent/mess/
-# COPY the current folder
+FROM node:14-alpine AS development
+ENV NODE_ENV development
+WORKDIR /app
+COPY package.json .
+COPY package-lock.json .
+RUN npm run build
+RUN npm i
 COPY . .
-# run npm i (install all the dependencies)
-RUN npm install
-# this will generate dist
 EXPOSE 3000
-
 CMD ["npm", "start"]
+
